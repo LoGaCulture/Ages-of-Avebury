@@ -140,6 +140,11 @@ public class InitialiseEverything : Order
                     mapManager.HideLocationMarker(locationVariable);
                     //set to unvisited
                     locationVariable.Value.LocationStatus = LoGaCulture.LUTE.LocationStatus.Unvisited;
+                    if (name.Contains("barnCentre"))
+                    {
+                        locationVariable.Value.LocationDisabled = true;
+                    }
+
                 }
                 // Check if the name contains any number  
                 if (name.Any(char.IsDigit))

@@ -35,6 +35,19 @@ public class GameCompleted : Order
 
 
 
+        //get the barnCentre variable and enable it
+        var barnCentre = GetEngine().GetVariable<LocationVariable>("barnCentre");
+        barnCentre.Value.LocationDisabled = false;
+
+        // Save similarly to LocationUpdate
+        TinySave.LastNodeSeen = ParentNode._NodeName;
+        TinySave.Instance.SaveMessages();
+        TinySave.Instance.SaveMessagesMedieval();
+        TinySave.Instance.SaveEngineVariables();
+        
+        TinySave.Instance.Save();
+
+        Debug.Log("Last node seen set to: " + TinySave.LastNodeSeen);
 
         Continue();
 

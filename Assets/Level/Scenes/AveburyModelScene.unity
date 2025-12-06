@@ -7445,6 +7445,8 @@ GameObject:
   - component: {fileID: 1586440918}
   - component: {fileID: 1586440917}
   - component: {fileID: 1586440920}
+  - component: {fileID: 1586440922}
+  - component: {fileID: 1586440921}
   m_Layer: 0
   m_Name: BasicFlowEngine
   m_TagString: Untagged
@@ -7510,6 +7512,8 @@ MonoBehaviour:
   - {fileID: 1586440918}
   - {fileID: 1586440917}
   - {fileID: 1586440920}
+  - {fileID: 1586440922}
+  - {fileID: 1586440921}
   eventHandler: {fileID: 1586440905}
   isGrouped: 0
   groupIndex: -1
@@ -7517,7 +7521,7 @@ MonoBehaviour:
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
   hoverStartTime: 0
-  targetUnlockNode: {fileID: 1586440910}
+  targetUnlockNode: {fileID: 0}
   targetKeyNode: {fileID: 0}
   showDesc: 0
   saveable: 0
@@ -7633,7 +7637,7 @@ MonoBehaviour:
   useCustomTint: 0
   hoverStartTime: 0
   targetUnlockNode: {fileID: 0}
-  targetKeyNode: {fileID: 1586440906}
+  targetKeyNode: {fileID: 0}
   showDesc: 0
   saveable: 0
   updateLocationStatusToComplete: 1
@@ -7804,6 +7808,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToHide: {fileID: 568972522}
   delay: 0
+--- !u!114 &1586440921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586440901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81000a54f770b444f863e5613d2e29ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetEngine: {fileID: 0}
+  targetNode: {fileID: 1586440910}
+  startIndex: 0
+  callMode: 0
+--- !u!114 &1586440922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586440901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e7ad385acaccf48b9cb2f7fef519f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 3
 --- !u!1 &1603612336
 GameObject:
   m_ObjectHideFlags: 0
