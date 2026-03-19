@@ -421,7 +421,16 @@ public class SelfieSegmentationSample : MonoBehaviour
 
 
             var meshData = MeshSerializer.ToBase64(mesh, normalisedContour);
-            ConnectionManager.Instance.SaveSharedVariable("StoneComplete", "MeshAndOutlineBase64",meshData);
+
+            if (stoneSlot == 1)
+            {
+                ConnectionManager.Instance.SaveSharedVariable("StoneComplete", "MeshAndOutlineBase64", meshData);
+            }
+            else if (stoneSlot == 2)
+            {
+                ConnectionManager.Instance.SaveSharedVariable("Stone2Complete", "MeshAndOutlineBase64", meshData);
+            }
+
             var tinySave = TinySave.Instance != null ? TinySave.Instance : FindObjectOfType<TinySave>();
             if (tinySave != null)
             {

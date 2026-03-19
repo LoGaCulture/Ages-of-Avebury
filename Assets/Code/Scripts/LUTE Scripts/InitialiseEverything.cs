@@ -124,7 +124,43 @@ public class InitialiseEverything : Order
         //get all the location variables in the flow engine
         var locationVariables = GetEngine().GetVariables<LocationVariable>();
 
-        if (TinySave.loadGame == false)
+
+        /*
+         * 
+         * 
+            var meshData = MeshSerializer.ToBase64(mesh, normalisedContour);
+            ConnectionManager.Instance.SaveSharedVariable("StoneComplete", "MeshAndOutlineBase64",meshData);
+            var tinySave = TinySave.Instance != null ? TinySave.Instance : FindObjectOfType<TinySave>();
+            if (tinySave != null)
+            {
+                tinySave.SaveStoneData(meshData, stoneSlot);
+                Debug.Log($"SelfieSegmentationSample: Saved stone slot {stoneSlot} (mesh length {meshData.Length}).");
+            }
+            else
+            {
+                Debug.LogError("SelfieSegmentationSample: TinySave not found; stone mesh not persisted.");
+            }*/
+
+
+        //send the two stones already made to the server
+        var ts = TinySave.Instance != null ? TinySave.Instance : FindObjectOfType<TinySave>();
+        if (ts != null && ConnectionManager.Instance != null)
+        {
+            for (int i = 1; i < 3; i++)
+            {
+                string base64 = ts.GetSavedStoneBase64(i);
+                if (!string.IsNullOrEmpty(base64))
+                {
+                    if(i == 1)
+                        ConnectionManager.Instance.SaveSharedVariable("StoneCompleteI", "MeshAndOutlineBase64", base64);
+                    else if(i == 2)
+                        ConnectionManager.Instance.SaveSharedVariable("Stone2CompleteI", "MeshAndOutlineBase64", base64);
+                    
+                }
+            }
+        }
+
+            if (TinySave.loadGame == false)
         {
             //go through each location variable name that has a number in it
             foreach (var locationVariable in locationVariables)

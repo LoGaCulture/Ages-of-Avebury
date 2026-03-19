@@ -270,6 +270,23 @@ public class TinySave : MonoBehaviour
         return prefab;
     }
 
+    public string GetSavedStoneBase64(int whichStone)
+    {
+        string key = whichStone switch
+        {
+            1 => KEY_STONE_DATA_FIRST,
+            2 => KEY_STONE_DATA_SECOND,
+            3 => KEY_STONE_DATA_THIRD_SOCIAL,
+            _ => null
+        };
+
+        if (!string.IsNullOrEmpty(key) && PlayerPrefs.HasKey(key))
+        {
+            return PlayerPrefs.GetString(key);
+        }
+        return null;
+    }
+
     public static bool GetGameCompletionFlag()
     {
         return PlayerPrefs.GetInt(KEY_GAME_COMPLETED, 0) == 1;
@@ -646,7 +663,7 @@ public class TinySave : MonoBehaviour
         }
         foreach (var data in wrapper.items)
         {
-            GameObject messageObject = Instantiate(medievalMessagePrefab, InitialiseEverything._inboxMiddleCanvas.transform.Find("Scroll View/Viewport/Content"));
+            GameObject messageObject = Instantiate(medievalMessagePrefab, InitialiseEverything._inboxMiddleCanvas.transform.Find("Scroll View/Viewport/content"));
             var fromText = messageObject.transform.Find("MsgBG/FromField/FromField").GetComponent<TMP_Text>();
             var contentText = messageObject.transform.Find("MsgBG/ContentsField").GetComponent<TMP_Text>();
             fromText.text = data.from;
